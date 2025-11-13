@@ -48,7 +48,9 @@
 
 | Main UI | Light Mode |
 |---------|------------|
-| ![UI 1](screenshots/ui-dark.png) | ![UI 2](screenshots/ui-darkgrayishcyan.png) |
+| ![UI 1](screenshot<img width="610" height="718" alt="ui1" src="https://github.com/user-attachments/assets/2b439163-b6e2-43ed-8b27-efe7c2b8cb9e" />
+s/ui-dark.png) | ![UI 2](screenshots/ui-darkgrayishcyan.png) |
+<img width="604" height="729" alt="ui2" src="https://github.com/user-attachments/assets/4555da70-064c-455f-9706-6c5b89bb73cd" />
 
 ---
 
