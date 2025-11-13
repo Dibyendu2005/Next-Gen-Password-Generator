@@ -1,0 +1,503 @@
+:root {
+  --bg: #0f1724;
+  --card: #111b2e;
+  --text: #e5e9f0;
+  --muted: #9aa8bd;
+  --accent: linear-gradient(90deg, #6ea8ff, #8c64ff);
+
+  --strength-low: #ef4444;
+  --strength-med: #facc15;
+  --strength-high: #4ade80;
+
+  --error: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.container {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.2rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   HEADER
+---------------------------------------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+#themeToggle {
+  background: var(--accent);
+  border: none;
+  padding: 0.48rem 0.9rem;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* ----------------------------------------------------------
+   PASSWORD BOX
+---------------------------------------------------------- */
+.password-box {
+  background: #0b1220;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.password-box input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.password-box input::placeholder {
+  color: var(--muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+---------------------------------------------------------- */
+.buttons button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------------------------------------
+   COPY TOOLTIP
+---------------------------------------------------------- */
+.copy-tooltip-container {
+  position: relative;
+}
+
+.copy-tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #22c55e;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* ----------------------------------------------------------
+   SLIDER
+---------------------------------------------------------- */
+.slider-container {
+  margin-top: 1rem;
+}
+
+.slider-container label {
+  font-size: 1rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+/* ----------------------------------------------------------
+   OPTIONS GRID
+---------------------------------------------------------- */
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+  margin: 1.2rem 0;
+}
+
+/* Force include special color */
+#forceInclude {
+  accent-color: #facc15;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ----------------------------------------------------------
+   TOOLTIP ICON
+---------------------------------------------------------- */
+.tooltip-container {
+  position: relative;
+}
+
+.info-icon {
+  background: #1e293b;
+  color: #60a5fa;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 0.6rem;
+  border-radius: 10px;
+  width: 260px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip-container:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ----------------------------------------------------------
+   CATEGORY SYSTEM
+---------------------------------------------------------- */
+.category-box {
+  background: #0b1220;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.category-box label {
+  display: block;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.category-box select {
+  width: 100%;
+  padding: 0.45rem;
+  background: #111b2e;
+  color: var(--text);
+  border-radius: 8px;
+  border: 1px solid #2d3b57;
+  outline: none;
+}
+
+/* ----------------------------------------------------------
+   POPUP FOR CHOOSING FIELDS
+---------------------------------------------------------- */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: #111b2e;
+  padding: 1.2rem 1.4rem;
+  border-radius: 12px;
+  width: 320px;
+}
+
+.popup-content h3 {
+  margin-top: 0;
+}
+
+.popup-content label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.popup-content button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  margin-right: 0.5rem;
+}
+
+/* ----------------------------------------------------------
+   FRAGMENT PANEL
+---------------------------------------------------------- */
+.fragments-panel {
+  margin: 1rem 0;
+  background: #0c1624;
+  border: 1px solid #1f2a3a;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.fragments-panel summary {
+  cursor: pointer;
+  padding: 0.4rem;
+  font-weight: 600;
+}
+
+.frag-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0.6rem;
+}
+
+.frag-row label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.frag-row input {
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  background: #0b1220;
+  border: 1px solid #283444;
+  color: var(--text);
+}
+
+/* Error message under inputs */
+.err {
+  font-size: 0.8rem;
+  color: var(--error);
+  min-height: 16px;
+}
+
+/* ----------------------------------------------------------
+   AMBIGUOUS SECTION
+---------------------------------------------------------- */
+#customAmbiguous {
+  background: #1c2538;
+  padding: 0.7rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.char-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.char-grid label {
+  background: #0f172a;
+  border: 1px solid #2d3b57;
+  padding: 5px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.amb-preview {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.badge {
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.badge.allowed {
+  background: #22c55e;
+}
+
+.badge.excluded {
+  background: #ef4444;
+}
+
+.pool-preview {
+  background: #0b1220;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ----------------------------------------------------------
+   STRENGTH METER
+---------------------------------------------------------- */
+.strength-meter {
+  height: 10px;
+  background: #222;
+  border-radius: 10px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+#strengthBar {
+  height: 100%;
+  width: 100%;
+  background: var(--strength-high);
+}
+
+#strengthText {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ----------------------------------------------------------
+   SUGGESTIONS
+---------------------------------------------------------- */
+.suggestions {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.suggestions button {
+  background: #1c2538;
+  border: 1px solid #2d3b57;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  color: var(--text);
+  text-align: left;
+}
+
+/* Copy all / download */
+#suggestionActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#suggestionActions button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   HISTORY
+---------------------------------------------------------- */
+.history-section {
+  background: #0b1220;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1.4rem;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-list {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-top: 0.7rem;
+  border-top: 1px solid #283444;
+  padding-top: 0.7rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #283444;
+}
+
+.history-time {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ----------------------------------------------------------
+   TIP
+---------------------------------------------------------- */
+.tip {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 1.4rem;
+}
+
+/* ----------------------------------------------------------
+   HIDDEN
+---------------------------------------------------------- */
+.hidden {
+  display: none !important;
+}
+
+/* ----------------------------------------------------------
+   LIGHT MODE
+---------------------------------------------------------- */
+.light-mode {
+  --bg: #606066;
+  --card: #4c5152;
+  --text: rgb(255, 255, 255);
+  --muted: #777;
+  --accent: linear-gradient(90deg, #2563eb, #7c3aed);
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Next-Gen  Secure Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🔒 Next-Gen </h1>
+    <button id="themeToggle">🌓</button>
+  </header>
+
+  <main>
+    <h2>Generate Strong Passwords</h2>
+
+    <!-- PASSWORD BOX -->
+    <div class="password-box">
+      <input type="text" id="passwordDisplay" readonly placeholder="Click Generate…" />
+      <div class="buttons">
+        <div class="copy-tooltip-container">
+          <button id="copyBtn">Copy</button>
+          <span class="copy-tooltip" id="copyTooltip">Copied!</span>
+        </div>
+        <button id="regenBtn">Generate</button>
+      </div>
+    </div>
+
+    <!-- LENGTH -->
+    <div class="slider-container">
+      <label>Length: <span id="lengthValue">16</span></label>
+      <input type="range" id="lengthSlider" min="6" max="64" value="16" />
+    </div>
+
+    <!-- OPTIONS -->
+    <div class="options">
+
+      <label><input type="checkbox" id="uppercase" checked> Uppercase A–Z</label>
+      <label><input type="checkbox" id="lowercase" checked> Lowercase a–z</label>
+      <label><input type="checkbox" id="numbers" checked> Numbers 0–9</label>
+      <label><input type="checkbox" id="symbols" checked> Symbols !@#$…</label>
+
+      <label><input type="checkbox" id="forceInclude"> 🔒 Force include all sets</label>
+
+      <label class="tooltip-container">
+        <input type="checkbox" id="excludeAmb">
+        Exclude ambiguous
+        <span class="info-icon">ⓘ</span>
+        <span class="tooltip-text">Avoid confusing characters: i, l, 1, O, 0</span>
+      </label>
+
+      <label><input type="checkbox" id="showSuggestions"> Show suggestions</label>
+    </div>
+
+    <!-- CATEGORY OPTIONS -->
+    <div class="category-box">
+      <label>Select Category:</label>
+      <select id="categorySelect">
+        <option value="">-- None --</option>
+        <option value="animals">Animals</option>
+        <option value="planets">Planets</option>
+        <option value="tech">Tech</option>
+        <option value="hacking">Hacking</option>
+        <option value="random">Random</option>
+      </select>
+
+      <label>Fill Mode:</label>
+      <select id="fillMode">
+        <option value="upper">1) Uppercase Only</option>
+        <option value="all">2) All Fragments</option>
+        <option value="choose">3) Choose Fields</option>
+      </select>
+    </div>
+
+    <!-- POPUP FOR SELECTING WHICH FIELDS TO FILL -->
+    <div id="choosePopup" class="popup hidden">
+      <div class="popup-content">
+        <h3>Select fields to fill</h3>
+        <label><input type="checkbox" id="popUpper" checked> Uppercase</label>
+        <label><input type="checkbox" id="popLower"> Lowercase</label>
+        <label><input type="checkbox" id="popNum"> Numbers</label>
+        <label><input type="checkbox" id="popSym"> Symbols</label>
+
+        <button id="applyCategory">Apply</button>
+        <button id="closePopup">Cancel</button>
+      </div>
+    </div>
+
+    <!-- FRAGMENT PANEL -->
+    <details class="fragments-panel">
+      <summary>Custom fragments (optional)</summary>
+
+      <div class="frag-row">
+        <label>Uppercase fragments:</label>
+        <input id="upperFragments" placeholder="ALPHA, TEST">
+        <small id="errUpper" class="err"></small>
+      </div>
+
+      <div class="frag-row">
+        <label>Lowercase fragments:</label>
+        <input id="lowerFragments" placeholder="river, moon">
+        <small id="errLower" class="err"></small>
+      </div>
+
+      <div class="frag-row">
+        <label>Number fragments:</label>
+        <input id="numberFragments" placeholder="2025, 44">
+        <small id="errNumber" class="err"></small>
+      </div>
+
+      <div class="frag-row">
+        <label>Symbols fragments:</label>
+        <input id="symbolFragments" placeholder="!!, @#$">
+        <small id="errSymbol" class="err"></small>
+      </div>
+
+      <div class="frag-row small">
+        <label><input type="checkbox" id="useFragments"> Use my fragments</label>
+      </div>
+    </details>
+
+    <!-- AMBIGUOUS SECTION -->
+    <div id="customAmbiguous" class="hidden">
+      <p>Select ambiguous characters to exclude:</p>
+
+      <div class="char-grid">
+        <label><input type="checkbox" class="amb-char" value="i" checked> i</label>
+        <label><input type="checkbox" class="amb-char" value="l" checked> l</label>
+        <label><input type="checkbox" class="amb-char" value="1" checked> 1</label>
+        <label><input type="checkbox" class="amb-char" value="O" checked> O</label>
+        <label><input type="checkbox" class="amb-char" value="0" checked> 0</label>
+      </div>
+
+      <p class="amb-preview-label">Excluded:</p>
+      <div id="ambPreview" class="amb-preview"></div>
+      <div id="poolPreview" class="pool-preview"></div>
+    </div>
+
+    <!-- STRENGTH -->
+    <div class="strength-meter"><div id="strengthBar"></div></div>
+    <p id="strengthText"></p>
+
+    <!-- SUGGESTIONS -->
+    <div id="suggestions" class="suggestions hidden"></div>
+
+    <div id="suggestionActions" class="hidden">
+      <button id="copyAllBtn">Copy All</button>
+      <button id="downloadCsvBtn">Download CSV</button>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="history-section">
+      <div class="history-header">
+        <h3>Password History</h3>
+        <button id="clearHistoryBtn">Clear</button>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="tip">Use a password manager for safety.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
