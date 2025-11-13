@@ -51,7 +51,7 @@
 <img width="610" height="718" alt="ui1" src="https://github.com/user-attachments/assets/2b439163-b6e2-43ed-8b27-efe7c2b8cb9e" />
 
 
-| dark grayish cyan |
+| Dark Grayish Cyan UI |
 |---------|
 <img width="604" height="729" alt="ui2" src="https://github.com/user-attachments/assets/4555da70-064c-455f-9706-6c5b89bb73cd" />
 
